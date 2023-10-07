@@ -1,0 +1,13 @@
+>>> OpenDatabase("/path/to/test_vector.vtk")
+>>> AddPlots("Vector", "test_vec")
+>>> c = View3DAttributes()
+>>> c.viewNormal = (1.5, 0, 1)
+>>> c.viewUp = (0, 0, 1)
+>>> SetView3D(c)
+>>> s = SaveWindowAttributes()
+>>> s.format = s.PNG
+>>> s.outputToCurrentDirectory = 1
+>>> s.fileName = "/path/to/output"
+>>> SetSaveWindowAttributes(s)
+>>> DrawPlots()
+>>> SaveWindow()
