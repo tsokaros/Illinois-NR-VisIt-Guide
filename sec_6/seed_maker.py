@@ -13,21 +13,20 @@ offsets = [np.pi/8, np.pi/8] # offset in the angles of phi chosen
 
 reflectZ = True
 
-
-with open("seeds_0.txt","w+") as f:
+with open("seeds_0.3d","w+") as f:
+    f.write("{} {} {} {}\n".format("x", "y", "z", "xdd"))
     for cen, pair, spin, num_steps, offset in zip(centers, pairs, spins, num_seeds_per_ring, offsets):
         r, h = pair
         spin_vec = np.array(spin); cen_vec = np.array(cen)
         spin_vec /= np.linalg.norm(spin_vec)
         u_vec = np.array([51., 50., 49.]) #random vector not parallel to spin
-        u_vec -= np.dot(u_vec, spin_vec)    #subtracting off part parallel to spin
         u_vec /= np.linalg.norm(u_vec)
+        u_vec = u_vec - ( np.dot(u_vec, spin_vec) / np.dot(spin_vec, spin_vec ))*spin_vec #gram schimdt
         v_vec = np.cross(spin_vec, u_vec)
-
         for phi in np.linspace(0 + offset, 2*np.pi + offset, num_steps, endpoint=False):
             c = r*np.cos(phi); s = r*np.sin(phi)
             p1 = cen_vec + c*u_vec + s*v_vec + h*spin_vec
-            f.write("{} {} {}\n".format(str(p1[0]), str(p1[1]), str(p1[2])))
+            f.write("{} {} {} {}\n".format(str(p1[0]), str(p1[1]), str(p1[2]), "1"))
             if reflectZ:
                 p2 = cen_vec + c*u_vec + s*v_vec - h*spin_vec
-                f.write("{} {} {}\n".format(str(p2[0]), str(p2[1]), str(p2[2])))
+                f.write("{} {} {} {}\n".format(str(p2[0]), str(p2[1]), str(p2[2]), "1"))
