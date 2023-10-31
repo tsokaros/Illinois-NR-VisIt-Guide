@@ -1,0 +1,20 @@
+
+OpenDatabase("sample_density.vtk", 0)
+AddPlot("Volume", "density", 1, 1)
+DrawPlots()
+
+# Volume Attributes
+VolumeAtts = VolumeAttributes()
+VolumeAtts.rendererType = VolumeAtts.Raycasting
+VolumeAtts.samplesPerRay = 10000
+
+
+#Linear Smoothing
+VolumeAtts.colorControlPoints.smoothing = VolumeAtts.colorControlPoints.Linear
+#CubicSpline Smoothing
+VolumeAtts.colorControlPoints.smoothing = VolumeAtts.colorControlPoints.CubicSpline
+#No Smoothing
+VolumeAtts.colorControlPoints.smoothing = VolumeAtts.colorControlPoints.None
+
+SetPlotOptions(VolumeAtts)
+
