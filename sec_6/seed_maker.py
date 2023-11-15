@@ -13,8 +13,8 @@ offsets = [np.pi/8, np.pi/8] # offset in the angles of phi chosen
 
 reflectZ = True
 
-with open("seeds_0.3d","w+") as f:
-    f.write("{} {} {} {}\n".format("x", "y", "z", "xdd"))
+with open("seeds_0.txt","w+") as f:
+    f.write("{} {} {}\n".format("x", "y", "z"))
     for cen, pair, spin, num_steps, offset in zip(centers, pairs, spins, num_seeds_per_ring, offsets):
         r, h = pair
         spin_vec = np.array(spin); cen_vec = np.array(cen)
@@ -26,7 +26,7 @@ with open("seeds_0.3d","w+") as f:
         for phi in np.linspace(0 + offset, 2*np.pi + offset, num_steps, endpoint=False):
             c = r*np.cos(phi); s = r*np.sin(phi)
             p1 = cen_vec + c*u_vec + s*v_vec + h*spin_vec
-            f.write("{} {} {} {}\n".format(str(p1[0]), str(p1[1]), str(p1[2]), "1"))
+            f.write("{} {} {} {}\n".format(str(p1[0]), str(p1[1]), str(p1[2])))
             if reflectZ:
                 p2 = cen_vec + c*u_vec + s*v_vec - h*spin_vec
-                f.write("{} {} {} {}\n".format(str(p2[0]), str(p2[1]), str(p2[2]), "1"))
+                f.write("{} {} {} {}\n".format(str(p2[0]), str(p2[1]), str(p2[2])))
