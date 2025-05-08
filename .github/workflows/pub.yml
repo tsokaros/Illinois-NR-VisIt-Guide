@@ -1,4 +1,4 @@
-name: sitepub
+name: sitepub 
 
 on:
   push:
@@ -35,5 +35,7 @@ jobs:
       
       - run: pip install mkdocs-material
       
-      - run: mkdocs gh-deploy --force
+      - name: Deploy MkDocs
+        working-directory: ./visualizationguide
+        run: mkdocs gh-deploy --force
 
