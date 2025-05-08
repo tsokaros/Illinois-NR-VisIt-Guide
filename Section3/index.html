@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Interacting with VisIT - The Illinois Numerical Relativity Visualization Primer</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Interacting with VisIT";
+        var mkdocs_page_input_path = "Section3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> The Illinois Numerical Relativity Visualization Primer
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Section1/">Introduction</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Section2/">Requirements And Feasibility</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Interacting with VisIT</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#interacting-with-visit-gui">Interacting with VisIT GUI</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interacting-with-visit-cli">Interacting with VisIT CLI</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Section4/">VisIT Elements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Section5/">Typical VisIT Workflow</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Section6/">Magnetars</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Section7/">Black Hole with Accretion Disk</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Section8/">Binary Neutron Stars</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Section9/">Binary Black Hole with Accretion Disk</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Section10/">Gravitational Waves</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../References/">References</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">The Illinois Numerical Relativity Visualization Primer</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Interacting with VisIT</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="interacting-with-visit">Interacting with VisIT</h1>
+<style>
+    .link {
+        text-align: center;
+        font-size: 16px;
+    }
+    .textstuff {
+        font-size: 17px;
+    }
+</style>
+
+<p>In this section, we will walk through the steps taken to create a simple visualization using a
+small sample data file. This visualization just serves as an introduction to VisIt. The details and
+justifications for the steps taken will be the content of future sections.</p>
+<p>The two primary ways of interacting with VisIt are through the graphical user interface (GUI)
+and the command line interface (CLI). The GUI is the interface that opens on the desktop when
+VisIt is launched on a local machine. Naturally, the GUI is more intuitive, but when we want to
+make many complex visualizations to create a movie out of a numerical relativity simulation, it
+isn’t very efficient. This is where the CLI comes in, as it allows us to script many of the commands
+and operations that VisIt performs on the data, allowing for quick manipulation and automation of
+visualizations that have many moving parts. A typical workflow in numerical relativity visualization
+involves experimenting in the GUI on a single frame to fine-tune certain settings before automating
+the process using scripts that interact with the CLI and visualizing an entire movie.</p>
+<p>Below, we provide instructions on how to make a simple visualization using the GUI and the CLI.
+We use a sample VTK file that contains vector field data on a 3 × 3 × 3 grid. The values for the
+vector field $v1 , v2 , v3$ at each of the 27 points are specified after the header. The specifics of the VTK
+file format and the data aren’t important here and will be discussed in detail in Sec. 4.1.2. The first
+few lines of <code>test_vector.vtk</code> — which can be found at <a href="https://github.com/tsokaros/Illinois-NR-VisIt-Guide/blob/main/sec_3/test_vector.vtk">VisIt-Guide/sec 3/test vector.vtk</a> —
+are shown in Code Lst. 3 below.</p>
+<pre><code class="language-vtk">1 # vtk DataFile Version 3.0
+2 test_vector_field
+3 ASCII
+4 DATASET STRUCTURED_POINTS
+5 DIMENSIONS 3 3 3
+6 ORIGIN -3 -3 -3
+7 SPACING 3 3 3
+8 POINT_DATA 27
+9 VECTORS test_vec float
+10 1.000000 0.000000 0.000000
+11 1.000000 0.000000 0.000000
+12 1.000000 0.000000 0.000000
+13 1.000000 0.000000 0.000000
+14 1.000000 0.000000 0.000000
+15 1.000000 0.000000 0.000000
+16 1.000000 0.000000 0.000000
+17 1.000000 0.000000 0.000000
+18 1.000000 0.000000 0.000000
+19 1.000000 0.000000 0.000000
+20 1.000000 0.000000 0.000000
+21 1.000000 0.000000 0.000000
+22 1.000000 0.000000 0.000000
+23 1.000000 0.000000 0.000000
+24 1.000000 0.000000 0.000000
+25 1.000000 0.000000 0.000000
+26 1.000000 0.000000 0.000000
+27 1.000000 0.000000 0.000000
+28 1.000000 0.000000 0.000000
+29 1.000000 0.000000 0.000000
+30 1.000000 0.000000 0.000000
+31 1.000000 0.000000 0.000000
+32 1.000000 0.000000 0.000000
+33 1.000000 0.000000 0.000000
+34 1.000000 0.000000 0.000000
+35 1.000000 0.000000 0.000000
+36 1.000000 0.000000 0.000000
+</code></pre>
+<p style="text-align: center;">Code Listing 3: <code>test_vector.vtk</code></p>
+<h2 id="interacting-with-visit-gui">Interacting with VisIT GUI</h2>
+<p>On a local machine, the user can launch the VisIt GUI either by running the executable file
+(for Windows and Mac) or by running the VisIt executable from the terminal (for Linux). On a
+supercomputer, please refer to the machine’s documentation, since X11 forwarding or a VNC client
+of some sort is required. Many supercomputing systems also have an associated OnDemand interface
+in which users can access the supercomputing resources through website interface. Depending on the
+support of the OnDemand interface, the supercomputer may allow you to access the supercomputing
+resources through a desktop interface, allowing the users to access the VisIt GUI Interface. After
+successfully launching the GUI, we are introduced to the standard VisIt layout (Fig. 6).</p>
+<p style="text-align: center;"><img alt="alt text" src="../img/sec_4_files/4.1.0-GUI_on_launch.png" /></p>
+<p style="text-align: center;">Figure 6: Standard VisIt Layout</p>
+<p>We will now walk through the steps we will need to take to make a first visualization in VisIt.
+First, download the data file <code>test_vector.vtk</code> to the same machine VisIt is being run on. To plot
+the data in VisIt, we will need to open the file as a database. We can do this by clicking the <strong>Open</strong>
+button at the top of the left panel in the VisIt layout (Fig. 7).</p>
+<p><img alt="alt text" src="../img/sec_4_files/4.1.1-GUI_open_database_0.png" /></p>
+<p style="text-align: center;">Figure 7: Open Database in VisIt GUI</p>
+<p>A file explorer will open up. Navigate to where we downloaded <code>test_vector.vtk</code>, select the
+file, and click open. Now that the database is opened, we can create a plot. Since the sample
+database contains vector field data, we will create a vector plot. Click the <strong>Add</strong> button to bring up
+a dropdown menu of all the available plots. At the bottom of the list, hover over the <strong>Vector</strong> plot
+option and click <strong>test_vec</strong>, which is the custom name for the vector field contained in the database that we just loaded. Then click the <strong>Draw</strong> button to create the plot</p>
+<p style="text-align: center;"><img alt="alt text" src="../img/sec_4_files/4.1.3-GUI_add_vector_plot.png" style="width:45%; display:inline-block;" /></p>
+<p style="text-align: center;"><img alt="alt text" src="../img/sec_4_files/4.1.4-GUI_draw_plots.png" style="width:45%; display:inline-block;" /></p>
+<p style="text-align: center;">Figure 8: Add vector plot and draw plot in VisIt GUI</p>
+<p>After clicking <strong>Draw</strong>, the plot will load before appearing in the right panel of the standard VisIt
+layout. We can click and drag the plot to change its orientation. The plot should look similar to
+Fig. 9. As we can see, the vector field contained in the sample data file is a constant vector field
+that points in the +x̂ direction.</p>
+<p style="text-align: center;"><img alt="alt text" src="../img/sec_4_files/4.1.5-GUI_final_plot.png" /></p>
+<p style="text-align: center;">Figure 9: Sample Vector Plot in VisIt GUI</p>
+<h2 id="interacting-with-visit-cli">Interacting with VisIT CLI</h2>
+<p>We will now replicate the plot we made in the previous section using the CLI. To launch VisIt in
+CLI mode, we add the -cli flag when launching VisIt.</p>
+<pre><code class="language-bash">visit -cli
+</code></pre>
+<p>After doing so, the right panel of the standard VisIt layout will open, and the command line
+interface will open in the terminal (Fig. 10).</p>
+<p style="text-align: center;"><img alt="alt text" src="../img/sec_4_files/4.2.0-CLI_on_launch.png" /></p>
+<p style="text-align: center;">Figure 10: VisIt CLI Layout</p>
+<pre><code class="language-bash">&gt;&gt;&gt;OpenDatabase(&quot;/path/to/test vector.vtk&quot;)
+&gt;&gt;&gt;AddPlots(&quot;Vector&quot;, &quot;test vec&quot;)
+&gt;&gt;&gt;DrawPlots()
+</code></pre>
+<p>After doing so, the same plot that we created in the GUI (Fig. 9) will render. As with the GUI,
+we can drag the plot to change its orientation.</p>
+<p>With VisIt CLI, we can also make visualizations and save them to image files without opening a
+VisIt window. To do this, we will need to launch VisIt with the -cli and the -nowin options.</p>
+<pre><code class="language-bash">visit -cli -nowin
+</code></pre>
+<p>To recreate the plot and save it to an image in -nowin mode, type the following lines into the
+CLI.</p>
+<pre><code class="language-bash">1 &gt;&gt;&gt; OpenDatabase(&quot;/path/to/test_vector.vtk&quot;)
+2 &gt;&gt;&gt; AddPlots(&quot;Vector&quot;, &quot;test_vec&quot;)
+3 &gt;&gt;&gt; c = View3DAttributes()
+4 &gt;&gt;&gt; c.viewNormal = (1.5, 0, 1)
+5 &gt;&gt;&gt; c.viewUp = (0, 0, 1)
+6 &gt;&gt;&gt; SetView3D(c)
+7 &gt;&gt;&gt; s = SaveWindowAttributes()
+8 &gt;&gt;&gt; s.format = s.PNG
+9 &gt;&gt;&gt; s.outputToCurrentDirectory = 1
+10 &gt;&gt;&gt; s.fileName = &quot;/path/to/output&quot;
+11 &gt;&gt;&gt; SetSaveWindowAttributes(s)
+12 &gt;&gt;&gt; DrawPlots()
+13 &gt;&gt;&gt; SaveWindow()
+</code></pre>
+<p>In the <code>-nowin</code> mode, we specify the <code>View3DAttributes()</code> to change the orientation since we
+cannot drag the plot around. The <code>viewNormal</code> vector specifies a vector from the origin to the
+camera, and the <code>viewUp</code> vector specifies the top of the camera (see Fig. 38, Sec. 4.5). We also need
+to specify the <code>SaveWindowAttributes()</code> since we are saving the plot to an image file (see Sec. 4.5).
+The <code>/path/to/</code> points to the folder where you want to save your output images. After saving the
+plot to an image, we can exit the <code>visit -cli -nowin</code> environment and return to the terminal by
+pressing <strong>Ctrl+C</strong>.</p>
+<p>Instead of typing these commands one by one in the VisIt CLI, we can also use Python scripting
+which is much more efficient (especially when we are making a large amount of visualizations for a
+movie). To do this, we create a <code>run.py</code> VisIt script like the one shown in Code Lst. 3.2, which can
+be found at <a href="https://github.com/tsokaros/Illinois-NR-VisIt-Guide/blob/main/sec_3/run.py">VisIt-Guide/sec_3/run.py</a></p>
+<pre><code class="language-py">1 OpenDatabase(&quot;/path/to/sample_vector_field.vtk&quot;)
+2 AddPlot(&quot;Vector&quot;, &quot;vec_field&quot;)
+3
+4 v = VectorAttributes()
+5 v.scaleByMagnitude = 0
+6 v.autoScale = 0
+7 v.scale = 2.0
+8 v.minFlag = 1
+9 v.maxFlag = 1
+10 v.min = 0
+11 v.max = 1e-8
+12 v.colorTableName = 'hot'
+13 v.nVectors = 1000
+14 SetPlotOptions(v)
+15
+16 c = View3DAttributes()
+17 c.viewNormal = (1.0, -1.0, 0.35)
+18 c.viewUp = (0, 0, 1)
+19 SetView3D(c)
+20 s = SaveWindowAttributes()
+21 s.format = s.PNG
+22 s.outputToCurrentDirectory = 1
+23 s.fileName = &quot;/path/to/output&quot;
+24 SetSaveWindowAttributes(s)
+25 DrawPlots()
+26 SaveWindow()
+</code></pre>
+<p style="text-align: center;">Code Listing 3.2: <code>run.py</code></p>
+<p>Then we can run the script directly from the terminal.</p>
+<pre><code class="language-bash">visit -cli -nowin -s run.py
+</code></pre>
+<p>where the -s flag indicates that VisIt will use the run.py script.
+Documentation for the VisIt CLI can be found on their website and can be very helpful, but it
+is not comprehensive. Thankfully, the VisIt GUI provides a tool that converts actions taken in the
+GUI to a CLI script. In the toolbar, navigate to Controls → Command . . . which will open up
+a window as seen in Fig. 11. Within this window, we can start by pressing the Record button and
+performing any GUI commands. After we have completed any GUI commands that we would like
+to map onto the CLI counterparts, we can click ■ Stop and the corresponding CLI commands will be displayed within the command box within the middle of the window. If we would like to create a CLI command file in which we could automate any repetitive commands, we could use the Make
+macro functionality in order to create a CLI command file to run.
+This can be especially useful to the user when trying to automate the visualization process
+if a particular visualization command might be difficult to code, as this feature will auto fill the
+corresponding GUI command into the CLI code.</p>
+<p style="text-align: center;"><img alt="alt text" src="../img/sec_4_files/guitocli.png" /></p>
+<p style="text-align: center;">Figure 11: VisIT GUI to CLI window</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Section2/" class="btn btn-neutral float-left" title="Requirements And Feasibility"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Section4/" class="btn btn-neutral float-right" title="VisIT Elements">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Section2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Section4/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

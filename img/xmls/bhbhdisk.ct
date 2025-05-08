@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Object name="ColorTable">
+    <Field name="Version" type="string">3.0.0</Field>
+    <Object name="ColorControlPointList">
+        <Object name="ColorControlPoint">
+            <Field name="colors" type="unsignedCharArray" length="4">13 0 255 8 </Field>
+            <Field name="position" type="float">0.00</Field>
+        </Object>
+...

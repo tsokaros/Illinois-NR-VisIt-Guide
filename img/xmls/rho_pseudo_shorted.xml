@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Object name="PseudocolorAttributes">
+    <Field name="minFlag" type="bool">true</Field>
+    <Field name="min" type="double">-4</Field>
+    <Field name="maxFlag" type="bool">true</Field>
+    <Field name="max" type="double">-0.001</Field>
+    <Field name="colorTableName" type="string">bhbhdisk</Field>
+    <Field name="opacityType" type="string">ColorTable</Field>
+    <Field name="opacityVariable" type="string">logrho</Field>
+    <Field name="opacityVarMin" type="double">-4</Field>
+    <Field name="opacityVarMax" type="double">-0.001</Field>
+    ...
+</Object>

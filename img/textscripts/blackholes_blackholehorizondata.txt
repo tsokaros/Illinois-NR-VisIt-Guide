@@ -1,0 +1,5 @@
+x y z bh1p
+x1 y1 z1 0
+x2 y2 z2 0
+...
+xn yn zn 0

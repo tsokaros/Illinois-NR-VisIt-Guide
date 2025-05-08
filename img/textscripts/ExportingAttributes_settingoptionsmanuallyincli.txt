@@ -1,0 +1,5 @@
+v = VolumeAttributes()
+v.attribute1 = x1
+v.attribute2 = x2
+...
+SetPlotOptions(v)
