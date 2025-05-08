@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Object name="VolumeAttributes">
+    <Field name="legendFlag" type="bool">false</Field>
+    <Field name="lightingFlag" type="bool">true</Field>
+    <Object name="colorControlPoints">
+        <Object name="ColorControlPointList">
+            <Object name="ColorControlPoint">
+                <Field length="4" name="colors" type="unsignedCharArray">0 255 200 255 </Field>
+                <Field name="position" type="float">0.0607903</Field>
+            </Object>
+            ...
+    <Field name="opacityAttenuation" type="float">1.0</Field>
+    <Field length="256" name="freeformOpacity" type="unsignedCharArray">0 0 ...
+    ...
+</Object>

@@ -1,0 +1,17 @@
+a = AnnotationAttributes()
+a.backgroundMode = a.Solid
+a.backgroundColor = (155, 155, 155, 255) #gray
+a.legendInfoFlag = 0 
+a.userInfoFlag = 0
+a.axes3D.visible = 0
+a.axes3D.triadFlag = 0
+a.axes3D.bboxFlag = 0
+SetAnnotationAttributes(a)
+
+txt = CreateAnnotationObject("Text2D")
+txt.position = (0.75, 0.95) #(x,y) where x and y range from 0 to 1
+txt.useForegroundForTextColor = 0
+txt.textColor = (255, 255, 255, 255)
+txt.fontBold = 1
+txt.fontFamily = txt.Times 
+txt.text = "t/M = {}".format(int(t/M))

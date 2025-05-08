@@ -1,0 +1,12 @@
+#combining vx, vy, vz into vector expression
+DefineVectorExpression("vVec_temp","{vx,vy,vz}")
+
+#if magnitude(vVec_temp) > 0.5, use original data, 
+#else, set to {0,0,0}
+DefineVectorExpression("vVec","if(gt(magnitude(vVec_temp), \
+    0.5), vVec_temp, {0,0,0})")
+
+# below: only show arrows where the 
+#log(b^2/2*rho) plot is larger than -0.5
+DefineVectorExpression("vVec","if(gt(logbsq2r, -0.5), \
+    vVec_temp, {0,0,0})")

@@ -1,0 +1,10 @@
+ActivateDatabase("sample_density.vtk")
+AddPlot("Pseudocolor", "density", 1, 1)
+AddOperator("Isosurface", 1)
+
+IsosurfaceAtts = IsosurfaceAttributes()
+IsosurfaceAtts.contourNLevels = 25
+IsosurfaceAtts.contourMethod = IsosurfaceAtts.Level
+SetOperatorOptions(IsosurfaceAtts, 0, 1)
+
+DrawPlots()

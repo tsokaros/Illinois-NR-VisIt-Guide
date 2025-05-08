@@ -1,0 +1,6 @@
+c = View3DAttributes()
+c.viewNormal = (1.0, 1.0, 1.0)
+c.viewUp = (0.0, 0.0, 1.0)
+c.focus = (0.0, 0.0, 0.0)
+c.imageZoom = 1
+SetView3D(c)

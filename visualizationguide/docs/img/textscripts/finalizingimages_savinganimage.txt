@@ -1,0 +1,8 @@
+s = SaveWindowAttributes()
+s.format = s.PNG
+s.outputToCurrentDirectory = 1 #so we can choose where to output
+s.fileName = "/path/to/output"
+s.width = 1920   #creates a 1920 X 1080 image
+s.height = 1080
+s.resConstraint = s.NoConstraint
+SetSaveWindowAttributes(s)

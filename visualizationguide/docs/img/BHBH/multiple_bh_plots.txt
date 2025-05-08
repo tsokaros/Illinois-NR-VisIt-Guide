@@ -1,0 +1,8 @@
+ActivateDatabase("/path/to/bh1.3d")
+AddPlot("Pseudocolor", "bh1p")  #plot index 0
+SetActivePlots(0)
+... #apply pseudo options
+ActivateDatabase("/path/to/bh2.3d")
+AddPlot("Pseudocolor", "bh2p")  #plot index 1
+SetActivePlots(1)
+... #apply pseudo options

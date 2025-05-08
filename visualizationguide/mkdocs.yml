@@ -1,0 +1,20 @@
+site_name: The Illinois Numerical Relativity Visualization Primer 
+nav:
+  - Home: index.md
+  - Introduction: Section1.md
+  - Requirements And Feasibility: Section2.md
+  - Interacting with VisIT: Section3.md
+  - VisIT Elements: Section4.md
+  - Typical VisIT Workflow: Section5.md
+  - Magnetars: Section6.md
+  - Black Hole with Accretion Disk: Section7.md
+  - Binary Neutron Stars: Section8.md
+  - Binary Black Hole with Accretion Disk: Section9.md
+  - Gravitational Waves: Section10.md
+  - References: References.md 
+theme:
+  name: readthedocs
+markdown_extensions:
+  - attr_list
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
